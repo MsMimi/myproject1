@@ -40,7 +40,10 @@
     <span class="input-label">Email</span>
     <input type="email" placeholder="" ng-model="person.email">
   </label>
-              <button class="button button-block button-balanced" ng-click="submitData()">
+  
+
+             
+   <button class="button button-block button-balanced" ng-click="submitData()">
    Save
 </button>
       
@@ -61,7 +64,7 @@ var app=angular.module('app',['ionic']);
 /*define CONTROLLERS & CONFIGS*/
 /******************************/
 app.service('DataService', function($http){
-	var url="https://script.google.com/macros/s/AKfycby_nyWSAYXTFlR6gR198UBmmuau7EkmhhDwXMCXaaJRwrzMy1zQ/exec";
+	var url="https://script.google.com/macros/s/AKfycbyxRvYhGH9OroaYY-V8t6Qv_c7yWGm9WSS0_uflu_7U29J_tYZk/exec";
 	return {   
 		getItems: function(){
 			return $http.get(url+"?cmd=getrecords").then(function(response){
@@ -113,6 +116,7 @@ var sendparameters=Object.keys($scope.person).map((i)=>i+'='+$scope.person[i]).j
      })
      .finally(function(){ /* in the end*/
        $ionicLoading.hide(); /* hide loading icon*/
+    $scope.callService();
      });           
 }
   
